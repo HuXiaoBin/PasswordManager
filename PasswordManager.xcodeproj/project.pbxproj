@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3F040921809ED800CC74F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3F040821809ED800CC74F3 /* Images.xcassets */; };
 		2B95424B212A5D42000F82B9 /* huxbdb.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B95424A212A5D42000F82B9 /* huxbdb.plist */; };
 		CC1F1E1D1871079B0094103A /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1F1E1C1871079B0094103A /* MainPageViewController.m */; };
 		CC82D27E1870FD6F008714CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC82D27D1870FD6F008714CE /* UIKit.framework */; };
@@ -23,6 +24,7 @@
 		CC82D2AB1870FE04008714CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC82D2A91870FE04008714CE /* AppDelegate.m */; };
 		CC82D2AE1870FEAB008714CE /* HuxbCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CC82D2AD1870FEAB008714CE /* HuxbCommon.m */; };
 		CCFA454E18716A07001BC56E /* nav_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA454D18716A07001BC56E /* nav_btn_bg@2x.png */; };
+		DE2C811C00A65923D66069E6 /* Pods_PasswordManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED0028C5B69A611A1333164 /* Pods_PasswordManager.framework */; };
 		E94833181871BC6D003A5C62 /* DetailPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94833171871BC6D003A5C62 /* DetailPageViewController.m */; };
 		E996862B1A1D9B8A006C09D6 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = E99686271A1D9B8A006C09D6 /* MBProgressHUD+MJ.m */; };
 		E996862C1A1D9B8A006C09D6 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E99686281A1D9B8A006C09D6 /* MBProgressHUD.bundle */; };
@@ -31,7 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B3F040821809ED800CC74F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2B95424A212A5D42000F82B9 /* huxbdb.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = huxbdb.plist; sourceTree = "<group>"; };
+		31B9CDA3A0FB5441EA372105 /* Pods-PasswordManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordManager/Pods-PasswordManager.debug.xcconfig"; sourceTree = "<group>"; };
+		4FBF7EDF6BC0CD808A9A264D /* Pods-PasswordManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordManager/Pods-PasswordManager.release.xcconfig"; sourceTree = "<group>"; };
 		CC1F1E1B1871079B0094103A /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		CC1F1E1C1871079B0094103A /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		CC82D27A1870FD6F008714CE /* PasswordManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +67,7 @@
 		E996862A1A1D9B8A006C09D6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E9ECF6B21A354AEF0071F632 /* HuxbDBOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuxbDBOperator.h; sourceTree = "<group>"; };
 		E9ECF6B31A354AEF0071F632 /* HuxbDBOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuxbDBOperator.m; sourceTree = "<group>"; };
+		FED0028C5B69A611A1333164 /* Pods_PasswordManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +78,29 @@
 				CC82D27E1870FD6F008714CE /* UIKit.framework in Frameworks */,
 				CC82D2801870FD6F008714CE /* Foundation.framework in Frameworks */,
 				CC82D2821870FD6F008714CE /* CoreGraphics.framework in Frameworks */,
+				DE2C811C00A65923D66069E6 /* Pods_PasswordManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C397A439119AC7787342ACF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31B9CDA3A0FB5441EA372105 /* Pods-PasswordManager.debug.xcconfig */,
+				4FBF7EDF6BC0CD808A9A264D /* Pods-PasswordManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CC82D2711870FD6F008714CE = {
 			isa = PBXGroup;
 			children = (
 				CC82D2831870FD6F008714CE /* PasswordManager */,
 				CC82D27C1870FD6F008714CE /* Frameworks */,
 				CC82D27B1870FD6F008714CE /* Products */,
+				9C397A439119AC7787342ACF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +118,7 @@
 				CC82D27D1870FD6F008714CE /* UIKit.framework */,
 				CC82D27F1870FD6F008714CE /* Foundation.framework */,
 				CC82D2811870FD6F008714CE /* CoreGraphics.framework */,
+				FED0028C5B69A611A1333164 /* Pods_PasswordManager.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +128,7 @@
 			children = (
 				E99686251A1D9B8A006C09D6 /* MBProgressHUD */,
 				CC82D2A71870FE04008714CE /* classes */,
+				2B3F040821809ED800CC74F3 /* Images.xcassets */,
 				CC82D2841870FD6F008714CE /* Supporting Files */,
 			);
 			path = PasswordManager;
@@ -186,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC82D2971870FD6F008714CE /* Build configuration list for PBXNativeTarget "PasswordManager" */;
 			buildPhases = (
+				D342D6D930F22562E75986D0 /* [CP] Check Pods Manifest.lock */,
 				CC82D2761870FD6F008714CE /* Sources */,
 				CC82D2771870FD6F008714CE /* Frameworks */,
 				CC82D2781870FD6F008714CE /* Resources */,
+				D612182688620355A9B33ACA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +260,7 @@
 				CC82D2A11870FDFD008714CE /* bg@2x.png in Resources */,
 				CC82D2A21870FDFD008714CE /* Default-568h@2x.png in Resources */,
 				CC82D2A31870FDFD008714CE /* Default.png in Resources */,
+				2B3F040921809ED800CC74F3 /* Images.xcassets in Resources */,
 				CC82D2A41870FDFD008714CE /* Default@2x.png in Resources */,
 				E996862C1A1D9B8A006C09D6 /* MBProgressHUD.bundle in Resources */,
 				CC82D2A51870FDFD008714CE /* icon@2x.png in Resources */,
@@ -249,6 +271,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D342D6D930F22562E75986D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PasswordManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D612182688620355A9B33ACA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PasswordManager/Pods-PasswordManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FTPManager/FTPManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FTPManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordManager/Pods-PasswordManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC82D2761870FD6F008714CE /* Sources */ = {
@@ -338,14 +403,17 @@
 		};
 		CC82D2981870FD6F008714CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31B9CDA3A0FB5441EA372105 /* Pods-PasswordManager.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K5SZ5JGJ9J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PasswordManager/PasswordManager-Prefix.pch";
 				INFOPLIST_FILE = "PasswordManager/PasswordManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -355,14 +423,17 @@
 		};
 		CC82D2991870FD6F008714CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FBF7EDF6BC0CD808A9A264D /* Pods-PasswordManager.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K5SZ5JGJ9J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PasswordManager/PasswordManager-Prefix.pch";
 				INFOPLIST_FILE = "PasswordManager/PasswordManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;

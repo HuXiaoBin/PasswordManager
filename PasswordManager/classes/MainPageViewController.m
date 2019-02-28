@@ -10,14 +10,28 @@
 #import "HuxbCommon.h"
 #import "DetailPageViewController.h"
 #import "HuxbDBOperator.h"
+#import "AFNetworking.h"
+#import "FTPManager.h"
+
+#define FTPURL        @"192.168.31.196"
+#define FTPUsername   @"ADMINISTRATOR"
+#define FTPPSW        @"110110"
 
 //编辑状态改变
 static BOOL edit = YES;
 
-@implementation MainPageViewController
+@interface MainPageViewController () <FTPManagerDelegate>
 
+@end
+
+@implementation MainPageViewController
 {
     HuxbDBOperator *dbOperate;
+    FMServer* server;
+    FTPManager* man;
+    NSString* filePath;  // 上传文件的路径
+    BOOL succeeded;  // 记录传输结果是否成功
+    NSTimer* progTimer;
 }
 
 - (void)initView
@@ -103,9 +117,114 @@ static BOOL edit = YES;
 
 - (void)newDetailPage
 {
-    DetailPageViewController* detailPageViewController = [[DetailPageViewController alloc] initWithContent:nil andRowNum:0 andFlag:YES];
-    [self.navigationController pushViewController:detailPageViewController animated:YES];
+    UIAlertController *altController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *newPageAction = [UIAlertAction actionWithTitle:@"创建新记录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DetailPageViewController* detailPageViewController = [[DetailPageViewController alloc] initWithContent:nil andRowNum:0 andFlag:YES];
+        [self.navigationController pushViewController:detailPageViewController animated:YES];
+    }];
+    UIAlertAction *uploadAction = [UIAlertAction actionWithTitle:@"上传记录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+//        sessionManager.requestSerializer = [AFPropertyListRequestSerializer serializer];
+//        sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"text/html",@"application/json",@"text/plain",@"application/xml"]];
+//        [sessionManager POST:@"http://192.168.31.196/httpfilesave" parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//            NSArray *filePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                                    NSUserDomainMask, YES);
+//            NSString *documentPath = [filePath objectAtIndex:0];
+//            NSString *dbFilePath = [documentPath stringByAppendingPathComponent:@"huxbdb.plist"]; // 数据库全路径
+//            NSData *sourceFileData = [NSData dataWithContentsOfFile:dbFilePath];
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyyMMddHHmmss";
+//            NSString *str = [formatter stringFromDate:[NSDate date]];
+//            NSString *fileName = [NSString stringWithFormat:@"huxbdb_%@.png", str];
+//            [formData appendPartWithFileData:sourceFileData name:@"huxbdbfile" fileName:fileName mimeType:@"application/xml"];
+//
+//        } progress:^(NSProgress * _Nonnull uploadProgress) {
+//
+//        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            NSLog(@"%@",error);
+//        }];
+        
+        // 上传文件
+        [self uploadWithftpUrl:FTPURL ftpUsr:FTPUsername ftpPass:FTPPSW];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [altController addAction:newPageAction];
+    [altController addAction:uploadAction];
+    [altController addAction:cancelAction];
+    [self presentViewController:altController animated:YES completion:nil];
 }
+
+#pragma mark -- FTP上传
+
+// 上传
+-(void)uploadWithftpUrl:(NSString*)url ftpUsr:(NSString*)user ftpPass:(NSString*)pass {
+    // 配置FTP服务器信息
+    server = [FMServer serverWithDestination:url username:user password:pass];
+    // 初始化定时器
+    progTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeProgress) userInfo:nil repeats:YES];
+    // 激活定时器
+    [progTimer fire];
+    // 调用开始上传文件的方法
+    [self performSelectorInBackground:@selector(startUploading) withObject:nil];
+}
+
+-(void)startUploading {
+    // 初始化FTPManager
+    man = [[FTPManager alloc] init];
+    // 设置代理（非必须）
+    man.delegate = self;
+    
+    //    server.port = 21;  // 可以指定FTP端口
+    
+    //创建上传文件
+    NSArray *filePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                            NSUserDomainMask, YES);
+    NSString *documentPath = [filePath objectAtIndex:0];
+    
+    NSString *dbFilePath = [documentPath stringByAppendingPathComponent:@"huxbdb.plist"]; // 数据库全路径
+    NSData *sourceFileData = [NSData dataWithContentsOfFile:dbFilePath];
+    // 修改文件名
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSString *fileName = [NSString stringWithFormat:@"huxbdb_%@.plist", str];
+    // 开始上传并记录结果
+    succeeded = [man uploadData:sourceFileData withFileName:fileName toServer:server];
+    
+    //    NSString *path = @"/Users/lxf/Desktop/1114.txt";
+    //    NSURL *fileUrl = [NSURL URLWithString:path];
+    //    succeeded = [man uploadFile:fileUrl toServer:server];
+    
+    [self performSelectorOnMainThread:@selector(uploadFinished) withObject:nil waitUntilDone:NO];
+}
+-(void)changeProgress {
+    if (!man) {
+        [progTimer invalidate];
+        progTimer = nil;
+        return;
+    }
+    NSLog(@"上传进度：%@",man.progress);
+}
+// 上传完毕，一切置空
+-(void)uploadFinished {
+    [progTimer invalidate];
+    progTimer = nil;
+    filePath = nil;
+    server = nil;
+    man = nil;
+}
+
+#pragma mark - FTPManagerDelegate
+
+- (void)ftpManagerUploadProgressDidChange:(NSDictionary *)processInfo
+{
+    NSLog(@"%@", processInfo);
+}
+
+#pragma mark -- Action
 
 - (void)backBtnClicked
 {

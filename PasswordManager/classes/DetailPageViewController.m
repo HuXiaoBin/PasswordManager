@@ -91,7 +91,8 @@
     frame.size.height = 25;
     placeholdLbl = [[UILabel alloc] initWithFrame:frame];
     placeholdLbl.text = @"请输入内容";
-    placeholdLbl.textColor = [UIColor lightGrayColor];
+    placeholdLbl.textColor = [UIColor grayColor];
+    placeholdLbl.alpha = 0.9;
     placeholdLbl.font = [UIFont systemFontOfSize:16.0f];
     [self.view addSubview:placeholdLbl];
     
